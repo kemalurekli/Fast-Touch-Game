@@ -15,7 +15,12 @@
             app:argType="string" />
         <action
             android:id="@+id/action_homeFragment_to_firstFragment"
-            app:destination="@id/firstFragment" />
+            app:destination="@id/firstFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out" />
+        <action
+            android:id="@+id/action_homeFragment_to_modeFragment"
+            app:destination="@id/modeFragment" />
     </fragment>
     <fragment
         android:id="@+id/firstFragment"
@@ -24,7 +29,9 @@
         tools:layout="@layout/fragment_first" >
         <action
             android:id="@+id/action_firstFragment_to_modeFragment"
-            app:destination="@id/modeFragment" />
+            app:destination="@id/modeFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left" />
     </fragment>
     <fragment
         android:id="@+id/modeFragment"
@@ -33,6 +40,12 @@
         tools:layout="@layout/fragment_mode" >
         <action
             android:id="@+id/action_modeFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left" />
+        <action
+            android:id="@+id/action_modeFragment_to_firstFragment"
+            app:destination="@id/firstFragment"
+            app:enterAnim="@anim/from_left" />
     </fragment>
 </navigation>
