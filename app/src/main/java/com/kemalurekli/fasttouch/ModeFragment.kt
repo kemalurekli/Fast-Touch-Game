@@ -29,6 +29,9 @@ class ModeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.backButton.setOnClickListener {
+            Navigation.findNavController(it).navigate(ModeFragmentDirections.actionModeFragmentToFirstFragment())
+        }
         binding.easyButton.setOnClickListener {
             val action = ModeFragmentDirections.actionModeFragmentToHomeFragment("0")
             Navigation.findNavController(it).navigate(action)

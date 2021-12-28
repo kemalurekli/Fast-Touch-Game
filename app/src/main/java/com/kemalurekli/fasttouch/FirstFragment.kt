@@ -33,7 +33,7 @@ class FirstFragment : Fragment() {
             Navigation.findNavController(it).navigate(FirstFragmentDirections.actionFirstFragmentToModeFragment())
         }
         binding.settingsButton.setOnClickListener {
-            //Navigation.findNavController(it).navigate(FirstFragmentDirections.actionFirstFragmentToModeFragment())
+            Navigation.findNavController(it).navigate(FirstFragmentDirections.actionFirstFragmentToSettingsFragment())
         }
     }
 

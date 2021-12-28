@@ -29,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_margin="10dp"
-                android:text="Time: 15"
+                android:text="@string/time"
                 android:textColor="@color/white"
                 android:textSize="28sp"
                 android:textStyle="bold" />
@@ -40,22 +40,35 @@
                 android:layout_marginEnd="5dp"
                 android:layout_weight="3"
                 android:gravity="center"
-                android:text="Best Score"
+                android:text="@string/best_score"
                 android:textColor="@color/red"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
 
         </LinearLayout>
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="5dp"
+            android:id="@+id/seekbar_time"
+            android:thumb="@drawable/custom_thumb"
+            android:progressDrawable="@drawable/seekbar_background"
+            android:padding="6dp">
 
+        </SeekBar>
 
         <TextView
             android:id="@+id/scoreText"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:gravity="center"
             android:layout_margin="10dp"
-            android:text="Your Score: 0"
+            android:text="@string/score_0"
             android:textColor="@color/white"
             android:textSize="20sp" />
     </LinearLayout>
@@ -199,14 +212,6 @@
             app:srcCompat="@drawable/touchbomb" />
     </GridLayout>
 
-    <SeekBar
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:id="@+id/seekbar_time"
-        android:layout_margin="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/gridLayout">
-    </SeekBar>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

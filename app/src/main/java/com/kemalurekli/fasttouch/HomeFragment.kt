@@ -8,15 +8,18 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Handler
 import android.os.Looper
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.SeekBar
 import android.widget.Toast
 import androidx.navigation.Navigation
 import com.kemalurekli.fasttouch.databinding.FragmentHomeBinding
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_home.*
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -35,14 +38,15 @@ class HomeFragment : Fragment() {
     ): View? {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val view = binding.root
-        sharedPreferences = requireContext().getSharedPreferences("com.kemalurekli.fasttouch", Context.MODE_PRIVATE)
-        val getFromSharePreferences = sharedPreferences.getInt("bestscore",0)
-        binding.tvBestScore.text = "Best Score \n $getFromSharePreferences"
         return view
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        sharedPreferences = requireContext().getSharedPreferences("com.kemalurekli.fasttouch", Context.MODE_PRIVATE)
+        val getFromSharePreferences = sharedPreferences.getInt("bestscore",0)
+        val getFromSharePreferencesGameTime = sharedPreferences.getInt("gametimeinput",20)
+        val userInputTime : Long = getFromSharePreferencesGameTime.toLong()*1000
+        binding.tvBestScore.text = "Best Score \n $getFromSharePreferences"
         var gameMode : Long = 1000
 
         arguments?.let {
@@ -122,7 +126,7 @@ class HomeFragment : Fragment() {
             increaseScore()
         }
         //CountDown Timer
-        object : CountDownTimer(15500, 1000) {
+        object : CountDownTimer(userInputTime, 1000) {
             override fun onFinish() {
                 binding.timeText.text = "Time is up."
                 handler.removeCallbacks(runnable)
@@ -148,6 +152,14 @@ class HomeFragment : Fragment() {
             }
             override fun onTick(millisUntilFinished: Long) {
                 binding.timeText.text = "Time: " + millisUntilFinished / 1000
+
+                binding.seekbarTime.isEnabled=false
+                binding.seekbarTime.max=(userInputTime/1000).toInt()
+                binding.seekbarTime.progress=(millisUntilFinished/1000).toInt()
+
+
+
+
                 if(millisUntilFinished/1000 <10 ){
                     binding.timeText.setTextColor(resources.getColor(R.color.yellow))
                 }
@@ -156,6 +168,22 @@ class HomeFragment : Fragment() {
                 }
             }
         }.start()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
 
