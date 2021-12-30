@@ -9,9 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
 import androidx.navigation.Navigation
-import com.kemalurekli.fasttouch.databinding.FragmentHomeBinding
 import com.kemalurekli.fasttouch.databinding.FragmentSettingsBinding
-import com.kemalurekli.fasttouch.databinding.FragmentSplashBinding
 
 class SettingsFragment : Fragment() {
 

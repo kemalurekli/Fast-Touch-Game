@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import androidx.navigation.Navigation
-import com.kemalurekli.fasttouch.databinding.FragmentFirstBinding
 import com.kemalurekli.fasttouch.databinding.FragmentSplashBinding
 
 class SplashFragment : Fragment() {

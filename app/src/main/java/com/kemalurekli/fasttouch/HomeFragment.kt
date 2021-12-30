@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.opengl.Visibility
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Handler
@@ -14,12 +15,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.SeekBar
-import android.widget.Toast
 import androidx.navigation.Navigation
 import com.kemalurekli.fasttouch.databinding.FragmentHomeBinding
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_home.*
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -42,6 +39,8 @@ class HomeFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.playagain.visibility = View.INVISIBLE
+        binding.menubutton.visibility = View.INVISIBLE
         sharedPreferences = requireContext().getSharedPreferences("com.kemalurekli.fasttouch", Context.MODE_PRIVATE)
         val getFromSharePreferences = sharedPreferences.getInt("bestscore",0)
         val getFromSharePreferencesGameTime = sharedPreferences.getInt("gametimeinput",20)
@@ -133,22 +132,21 @@ class HomeFragment : Fragment() {
                 for (image in imageArray) {
                     image.visibility = View.INVISIBLE
                 }
-                //Alert
-                val alert = AlertDialog.Builder(requireContext())
-                alert.setTitle("Game Over")
-                alert.setMessage("Restart The Game?")
-                alert.setPositiveButton("Yes") { dialog, which ->
-                    //Restart
+
+                //After end of the game
+                binding.menubutton.visibility = View.VISIBLE
+                binding.playagain.visibility = View.VISIBLE
+                binding.playagain.setOnClickListener {
                     score = 0
                     binding.scoreText.text = "Score : 0"
                     onViewCreated(view,savedInstanceState)
                 }
-                alert.setNegativeButton("No") { dialog, which ->
+                binding.menubutton.setOnClickListener {
                     val action = HomeFragmentDirections.actionHomeFragmentToFirstFragment()
                     Navigation.findNavController(view).navigate(action)
-                    Toast.makeText(requireContext(), "Game Over", Toast.LENGTH_LONG).show()
                 }
-                alert.show()
+                //After end of the game
+
             }
             override fun onTick(millisUntilFinished: Long) {
                 binding.timeText.text = "Time: " + millisUntilFinished / 1000

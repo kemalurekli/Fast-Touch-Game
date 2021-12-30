@@ -16,17 +16,5 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
     }
 
-    override fun onBackPressed() {
-            AlertDialog.Builder(this)
-                .setTitle("Exit Alert")
-                .setMessage("Do You Want To Exit Touch Fast?")
-                .setPositiveButton(android.R.string.ok) { dialog, whichButton ->
-                    super.onBackPressed()
-                }
-                .setNegativeButton(android.R.string.cancel) { dialog, whichButton ->
-                }
-                .show()
-            }
-
 
     }
