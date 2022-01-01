@@ -1,5 +1,6 @@
 package com.kemalurekli.fasttouch
 
+import android.app.PendingIntent.getActivity
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -8,7 +9,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
+import androidx.fragment.app.FragmentManager
 import androidx.navigation.Navigation
+import com.google.android.material.internal.ContextUtils.getActivity
 import com.kemalurekli.fasttouch.databinding.FragmentSettingsBinding
 
 class SettingsFragment : Fragment() {

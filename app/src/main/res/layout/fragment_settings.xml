@@ -31,6 +31,9 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_margin="20dp"
+        android:thumb="@drawable/custom_thumb"
+        android:progressDrawable="@drawable/seekbar_background"
+        android:padding="6dp"
         android:min="10"
         android:max="100" />
 
@@ -42,6 +45,4 @@
         android:src="@drawable/backbutton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
