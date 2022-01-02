@@ -16,6 +16,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.navigation.Navigation
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
 import com.kemalurekli.fasttouch.databinding.FragmentHomeBinding
 import java.util.*
 import kotlin.collections.ArrayList
@@ -24,6 +27,7 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     lateinit var sharedPreferences: SharedPreferences
+    lateinit var mAdView : AdView
     var score = 0
     var imageArray = ArrayList<ImageView>()
     var handler = Handler(Looper.getMainLooper())
@@ -171,18 +175,12 @@ class HomeFragment : Fragment() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+        MobileAds.initialize(requireContext()) {}
+        mAdView = binding.adView
+        val adRequest = AdRequest.Builder().build()
+        mAdView.loadAd(adRequest)
     }
+
 
 
     fun hideImages(gameMode : Long) {
