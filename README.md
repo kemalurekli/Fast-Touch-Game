@@ -1,5 +1,6 @@
 # Fast-Touch-Game
 
+Navigation, ViewBinding, Splah Screen, Animations, SharedPreferences, Handler and Runnable. 
 
 **Now, Available for Play Store**  [Click](https://play.google.com/store/apps/developer?id=Keu+Soft)
 
